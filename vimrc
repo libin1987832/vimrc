@@ -192,6 +192,9 @@ nmap <C-F4> <ESC>:CtrlSFOpen<CR>
 "" 将tab键绑定为跳出括号
 "inoremap <TAB> <c-r>=SkipPair()<CR>
 "
+"
+nnoremap <leader>I <ESC>i<CR>#!/bin/bash<ESC>
+
 augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
