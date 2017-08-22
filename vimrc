@@ -92,10 +92,20 @@ let g:molokai_original = 1
 
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "配置默认的ycm_extra_conf.py
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_confirm_extra_conf=0   " 打开vim时不再询问是否加载ycm_extra_conf.py配置
 let g:ycm_collect_identifiers_from_tag_files = 1 "使用ctags生成的tags文件
+
+let g:ycm_enable_diagnostic_signs = 1 "诊断症状使能
+let g:ycm_enable_diagnostic_highlighting = 1 "诊断语法彩笔做标记
+let g:ycm_register_as_syntastic_checker = 1 " 使用syntastic检测语法
+let g:ycm_error_symbol = '乄'
+let g:ycm_warning_symbol = '〇'
+let g:ycm_show_diagnostics_ui = 1
+
+nnoremap <leader>ch :YcmDiags<CR>
 "tags
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
@@ -143,6 +153,18 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+"let g:syntastic_c_check_header = 1
+"let g:syntastic_c_auto_refresh_includes = 1
+"let g:syntastic_c_include_dirs = [ '/usr/include', '/usr/include/x86_64-linux-gnu' ]
+"let g:syntastic_c_compiler = 'clang'
+
+
+let g:syntastic_c_checkers=['make']
+let g:syntastic_c_errorformat = ' %trror: a%m'
+let g:syntastic_c_compiler = 'make'
+
+
+
 noremap <F3> :Autoformat<CR>
 noremap <F5> :!make<CR>
 
@@ -169,3 +191,8 @@ nmap <C-F4> <ESC>:CtrlSFOpen<CR>
 "endfunc
 "" 将tab键绑定为跳出括号
 "inoremap <TAB> <c-r>=SkipPair()<CR>
+"
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
