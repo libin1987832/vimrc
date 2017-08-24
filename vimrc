@@ -47,6 +47,9 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 "Plugin 'diffchanges.vim'
 Plugin 'chrisbra/changesPlugin'
+"cmake
+Plugin 'jalcine/cmake.vim'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -64,14 +67,25 @@ filetype plugin indent on    " required
 "
 "nerdtree map
 " Ctrl+N 打开/关闭
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR><ESC>/src<CR>o
+
+
+
+
 " 当不带参数打开Vim时自动加载项目树
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPost * exec /src<CR>o"
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree |endif
+
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+au VimEnter * execute "normal:/src\<cr>o"
+"autocmd VimEnter * execute <ESC>/src<CR>o
 " 当所有文件关闭时关闭项目树窗格
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " 不显示这些文件
-let NERDTreeIgnore=['\.pyc$', '\~$', 'node_modules'] "ignore files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\~$', 'node_modules','obj','\.out','\.files','\.so','tags']
+"ignore files in NERDTree
 " 不显示项目树上额外的信息，例如帮助、提示什么的
 let NERDTreeMinimalUI=1
 
@@ -171,8 +185,8 @@ noremap <F5> :!make<CR>
 noremap <F6> :!./darknet<CR>
 inoremap <F2> :DiffChangesDiffToggle<CR>
 
-nmap <F4> <ESC>:CtrlSF <c-r><c-w><CR> 
-nmap <C-F4> <ESC>:CtrlSFOpen<CR> 
+nmap <F4> <ESC>:CtrlSF <c-r><c-w><CR>
+nmap <C-F4> <ESC>:CtrlSFOpen<CR>
 
 "complete {
 "inoremap ' ''<ESC>i
@@ -183,19 +197,22 @@ nmap <C-F4> <ESC>:CtrlSFOpen<CR>
 
 ""设置跳出自动补全的括号
 "func SkipPair()
-		"if getline('.')[col('.') - 1] == ')' || getline('.')[col('.') - 1] == ']' || getline('.')[col('.') - 1] == '"' || getline('.')[col('.') - 1] == "'" || getline('.')[col('.') - 1] == '}'
-				"return "\<ESC>la"
-		"else
-				"return "\t"
-		"endif
+"if getline('.')[col('.') - 1] == ')' || getline('.')[col('.') - 1] == ']' || getline('.')[col('.') - 1] == '"' || getline('.')[col('.') - 1] == "'" || getline('.')[col('.') - 1] == '}'
+"return "\<ESC>la"
+"else
+"return "\t"
+"endif
 "endfunc
 "" 将tab键绑定为跳出括号
 "inoremap <TAB> <c-r>=SkipPair()<CR>
 "
 "
-nnoremap <leader>I <ESC>i<CR>#!/bin/bash<ESC>
-
+"nnoremap <leader>I <ESC>i<CR>#!/bin/bash<ESC>
+autocmd filetype sh execute "normal i#!/bin/bash\r"
 augroup reload_vimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+		autocmd!
+		autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
+
+
+let g:NERDTreeShowIgnoredStatus = 1
