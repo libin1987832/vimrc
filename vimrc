@@ -4,6 +4,7 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/single_vim
+"set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 "set rtp+=~/.vim/bundle/single_vim/molokai.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -33,7 +34,8 @@ Plugin 'scrooloose/nerdtree'
 " All of your Plugins must be added before the following line
 Plugin 'Valloric/YouCompleteMe'
 "Plugin 'kien/ctrlp.vim'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 
@@ -73,15 +75,9 @@ filetype plugin indent on    " required
 map <C-n> :NERDTreeToggle<CR><ESC>/src<CR>o
 
 
-
-
-
-
-
-
-
-
-
+"python3 from powerline.vim import setup as powerline_setup
+"python3 powerline_setup()
+"python3 del powerline_setup
 
 
 " 当不带参数打开Vim时自动加载项目树
@@ -90,7 +86,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree |endif
 
 "autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-au VimEnter * execute "normal:/src\<cr>o"
+"au VimEnter * execute "normal:/src\<cr>o"
 "autocmd VimEnter * execute <ESC>/src<CR>o
 " 当所有文件关闭时关闭项目树窗格
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == primary") | q | endif
@@ -102,13 +98,20 @@ let NERDTreeIgnore=['\.pyc$', '\~$', 'node_modules','obj','\.out','\.files','\.s
 let NERDTreeMinimalUI=1
 
 "PowerLine map
-set guifont=Inconsolata\ for\ Powerline:h15
+set guifont=Sauce\ Code\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
+"set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
+
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
+
+
 "color solarized
 syntax enable
 set background=dark
