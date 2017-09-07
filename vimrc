@@ -48,8 +48,11 @@ Plugin 'tpope/vim-surround'
 "Plugin 'diffchanges.vim'
 Plugin 'chrisbra/changesPlugin'
 "cmake
-Plugin 'jalcine/cmake.vim'
+"Plugin 'jalcine/cmake.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'lfv89/vim-interestingwords'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -68,6 +71,15 @@ filetype plugin indent on    " required
 "nerdtree map
 " Ctrl+N 打开/关闭
 map <C-n> :NERDTreeToggle<CR><ESC>/src<CR>o
+
+
+
+
+
+
+
+
+
 
 
 
@@ -154,8 +166,8 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 let g:ag_working_path_mode="r"
 
 set number
-set ts=4
-
+set ts=2
+set softtabstop=2
 
 "sybtastic
 set statusline+=%#warningmsg#
@@ -181,7 +193,34 @@ let g:syntastic_c_compiler = 'make'
 
 noremap <F3> :Autoformat<CR>
 noremap <F5> :!make<CR>
-
+"map <F3> :call FormatCode()<CR>
+"func! FormatCode()
+    "exec "w"
+    "if &filetype == 'c' || &filetype == 'h'
+        "exec "!astyle --style=allman --suffix=none %"
+    "elseif &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'hpp'
+        "exec "!astyle --style=allman --suffix=none %"
+    "elseif &filetype == 'perl'
+        "exec "!astyle --style=gnu --suffix=none %"
+    "elseif &filetype == 'py'|| &filetype == 'python'
+        "exec "!autopep8 --in-place --aggressive %"
+    "elseif &filetype == 'java'
+        "exec "!astyle --style=java --suffix=none %"
+    "elseif &filetype == 'jsp'
+        "exec "!astyle --style=gnu --suffix=none %"
+    "elseif &filetype == 'xml'
+        "exec "!astyle --style=gnu --suffix=none %"
+    "else
+        "exec "normal gg=G"
+        "return
+    "endif
+"endfunc
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+"let g:autoformat_verbosemode=1
+"OR:
+"let verbose=1
 noremap <F6> :!./darknet<CR>
 inoremap <F2> :DiffChangesDiffToggle<CR>
 
@@ -216,3 +255,13 @@ augroup END " }
 
 
 let g:NERDTreeShowIgnoredStatus = 1
+
+"highlight
+nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+
+nnoremap <silent> n :call WordNavigation('forward')<cr>
+nnoremap <silent> N :call WordNavigation('backward')<cr>
+
+let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
+let g:interestingWordsRandomiseColors = 1
