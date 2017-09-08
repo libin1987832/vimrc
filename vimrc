@@ -57,6 +57,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'lfv89/vim-interestingwords'
+Plugin 'Valloric/ListToggle'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -272,3 +273,7 @@ nnoremap <silent> N :call WordNavigation('backward')<cr>
 
 let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
 let g:interestingWordsRandomiseColors = 1
+
+"command-t
+set wildignore+=*.o,*.obj
+let g:CommandTFileScanner="git"
