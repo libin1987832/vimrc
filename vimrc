@@ -58,6 +58,8 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'lfv89/vim-interestingwords'
 Plugin 'Valloric/ListToggle'
+Plugin 'skywind3000/asyncrun.vim'
+Plugin 'mh21/errormarker.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -277,3 +279,12 @@ let g:interestingWordsRandomiseColors = 1
 "command-t
 set wildignore+=*.o,*.obj
 let g:CommandTFileScanner="git"
+
+"airline with asyncrun
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+let g:asyncrun_auto = "make"
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+"errorformat
+let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
+
+
