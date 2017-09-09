@@ -60,6 +60,7 @@ Plugin 'lfv89/vim-interestingwords'
 Plugin 'Valloric/ListToggle'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'mh21/errormarker.vim'
+Plugin 'pedsm/sprint'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
