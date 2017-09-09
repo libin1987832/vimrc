@@ -35,10 +35,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 "Plugin 'kien/ctrlp.vim'
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
-
+Plugin 'vim-airline/vim-airline'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'rking/ag.vim'
 Plugin 'http://git.oschina.net/qiuchangjie/CodeFormatter'
@@ -52,6 +52,8 @@ Plugin 'chrisbra/changesPlugin'
 "cmake
 "Plugin 'jalcine/cmake.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'jreybert/vimagit'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'lfv89/vim-interestingwords'
@@ -109,8 +111,10 @@ set termencoding=utf-8
 set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-
-
+let g:miniBufExplForceSyntaxEnable = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 "color solarized
 syntax enable
