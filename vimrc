@@ -59,7 +59,7 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'lfv89/vim-interestingwords'
 Plugin 'Valloric/ListToggle'
 Plugin 'skywind3000/asyncrun.vim'
-Plugin 'mh21/errormarker.vim'  "conflict with vimagit <leader>cc
+"Plugin 'mh21/errormarker.vim'  "conflict with vimagit <leader>cc
 Plugin 'pedsm/sprint'
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -286,6 +286,6 @@ let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status
 let g:asyncrun_auto = "make"
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 "errorformat
-let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
+"let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 
 
