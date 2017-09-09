@@ -59,7 +59,7 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'lfv89/vim-interestingwords'
 Plugin 'Valloric/ListToggle'
 Plugin 'skywind3000/asyncrun.vim'
-Plugin 'mh21/errormarker.vim'
+Plugin 'mh21/errormarker.vim'  "conflict with vimagit <leader>cc
 Plugin 'pedsm/sprint'
 call vundle#end()            " required
 filetype plugin indent on    " required
