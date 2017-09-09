@@ -25,7 +25,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 "Plugin 'file:///home/lb/git/command-t'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 "n 'scrooloose/nerdtree' Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
@@ -40,9 +40,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline'
 Plugin 'dyng/ctrlsf.vim'
-Plugin 'rking/ag.vim'
-Plugin 'http://git.oschina.net/qiuchangjie/CodeFormatter'
-Plugin 'scrooloose/syntastic'
+"Plugin 'rking/ag.vim'
+"Plugin 'http://git.oschina.net/qiuchangjie/CodeFormatter'
+"Plugin 'scrooloose/syntastic'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'chiel92/vim-autoformat'
 Plugin 'scrooloose/nerdcommenter'
@@ -56,7 +56,7 @@ Plugin 'jreybert/vimagit'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'lfv89/vim-interestingwords'
+"Plugin 'lfv89/vim-interestingwords'
 Plugin 'Valloric/ListToggle'
 Plugin 'skywind3000/asyncrun.vim'
 "Plugin 'mh21/errormarker.vim'  "conflict with vimagit <leader>cc
