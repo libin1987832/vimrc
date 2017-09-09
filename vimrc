@@ -288,4 +288,5 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 "errorformat
 "let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 
-
+"hlseach
+set hlsearch
