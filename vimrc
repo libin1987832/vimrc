@@ -61,6 +61,7 @@ Plugin 'Valloric/ListToggle'
 Plugin 'skywind3000/asyncrun.vim'
 "Plugin 'mh21/errormarker.vim'  "conflict with vimagit <leader>cc
 Plugin 'pedsm/sprint'
+"Plugin 'phonzia/cppSyntaxCheck'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -290,3 +291,5 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
 "hlseach
 set hlsearch
+
+set guifont=Courier\ 12
